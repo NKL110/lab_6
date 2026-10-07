@@ -68,17 +68,22 @@ namespace LeeNaKyung2593202 {
         void setId(int d) {
         id = d;
         testId();
-    }
+        }
 
         void setScore(int s) {
         score = s;
         testScore();
-    }
+        }
 
         void setGrade(char g) {
         grade = g;
         testGrade();
-    }
+        }
+
+        void setName(const std::string& n) {
+        name = n;
+        }
+
 
         // -print: 표준스트림출력으로 멤버변수들 출력
         void print()  const{
@@ -102,6 +107,10 @@ namespace LeeNaKyung2593202 {
         return grade;
     }
 
+        std::string getName() const {
+        return name;
+    }
+
         // -멤버함수로 전위증가연산자, 후위증가연산자 정의
         student& operator++(){
         ++score;
@@ -120,7 +129,7 @@ namespace LeeNaKyung2593202 {
     
     // -프렌드함수로서 입력연산자 >>, 출력연산자 <<, 이항연산자 ==, 이항연산자 + 정의
     friend std::istream& operator>>(std::istream& is, student& s){
-        is >> s.id >> s.score >> s.grade;
+        is >> s.name>> s.id >> s.score >> s.grade;
 
         s.testId();
         s.testScore();
@@ -130,7 +139,7 @@ namespace LeeNaKyung2593202 {
     }
 
     friend std::ostream& operator<<(std::ostream& os, const student& s){
-        os<< s.id<<","<<s.score<<","<<s.grade;
+        os<< s.name <<","<<s.id<<","<<s.score<<","<<s.grade;
 
         return os;
     }
@@ -142,6 +151,7 @@ namespace LeeNaKyung2593202 {
     friend int operator+(const student&s1, const student&s2){
         return s1.score + s2.score;
     }
+
 
  };
 }
