@@ -7,31 +7,33 @@
 namespace LeeNaKyung2593202 {
  // 1의 본인이름학번의 네임스페이스 안에 클래스를 정의하고
   class student {
-    private:
-    std::string name{};
-    int id{};
-    int score{};
-    char grade{};
 
-    //id (7digits),score(0~100), grade ('A',~ 'F')
-    // private 멤버함수 정의
-    void testId(){
+   
+    private:
+        std::string name{};
+         int id{};
+        int score{};
+        char grade{};
+
+        //id (7digits),score(0~100), grade ('A',~ 'F')
+        // private 멤버함수 정의
+        void testId(){
         if (id < 1000000 || id > 9999999){
             std::cout << "Invalid id!" << std::endl;
             std::exit(1);}
-    }
-    void testScore(){
+        }
+        void testScore(){
         if (score < 0 || score > 100){
             std::cout << "Invalid score!" << std::endl;
             exit(1);}
-    }
-    void testGrade(){
+        }
+        void testGrade(){
        if (grade < 'A' || grade > 'F'){
          std::cout << "Invalid grade!" << std::endl;
          std:: exit(1);
-       }
+         }
 
-    }
+        }
 
     public:
      student(const std::string& n="no name yet", int i=1234567, int s=0, char g='F')
@@ -57,7 +59,7 @@ namespace LeeNaKyung2593202 {
          testGrade();
 
          std::cout<<"Enter name: ";
-         std::getline(std::cin>>std::ws, name);
+        std::getline(std::cin>>std::ws, name);
          //std::cin>>std::ws>> name; 
          //input함수 추가
         }
@@ -107,7 +109,7 @@ namespace LeeNaKyung2593202 {
         return grade;
     }
 
-        std::string getName() const {
+        const std::string& getline() const {
         return name;
     }
 
@@ -143,6 +145,8 @@ namespace LeeNaKyung2593202 {
 
         return os;
     }
+
+   
 
     friend bool operator==(const student&s1, const student&s2){
         return s1.id==s2.id&&s1.score==s2.score&&s1.grade==s2.grade;
