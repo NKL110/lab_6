@@ -132,15 +132,24 @@ namespace LeeNaKyung2593202 {
     
     // -프렌드함수로서 입력연산자 >>, 출력연산자 <<, 이항연산자 ==, 이항연산자 + 정의
     friend std::istream& operator>>(std::istream& is, student& s){
-        is >> s.id >> s.score >> s.grade;
-        is >> std::ws;
-        std::getline(is, s.name);
-        
-        s.testId();
-        s.testScore();
-        s.testGrade();
+         std::cout << "Enter ID: ";
+    is >> s.id;
 
-        return is;
+    std::cout << "Enter Score: ";
+    is >> s.score;
+
+    std::cout << "Enter Grade: ";
+    is >> s.grade;
+
+    std::cout << "Enter name: ";
+    is >> std::ws;
+    std::getline(is, s.name);
+
+    s.testId();
+    s.testScore();
+    s.testGrade();
+
+    return is;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const student& s){
