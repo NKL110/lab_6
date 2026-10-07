@@ -34,7 +34,7 @@ namespace LeeNaKyung2593202 {
     }
 
     public:
-     student(std::string& n="no name yet", int i=1234567, int s=0, char g='F')
+     student(const std::string& n="no name yet", int i=1234567, int s=0, char g='F')
         : name{n}, id{i}, score{s}, grade{g} {
         testId();
         testScore();
@@ -85,7 +85,7 @@ namespace LeeNaKyung2593202 {
         std::cout << "ID: " << id << std::endl;
         std::cout << "Score: " << score << std::endl;
         std::cout << "Grade: " << grade << std::endl;
-        std::cout << "Name: " << name << std::sendl;
+        std::cout << "Name: " << name << std::endl;
         } 
         // print함수 변경: std::string형 멤버변수도 표준스트림으로 출력
 
