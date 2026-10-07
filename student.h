@@ -8,6 +8,7 @@ namespace LeeNaKyung2593202 {
  // 1의 본인이름학번의 네임스페이스 안에 클래스를 정의하고
   class student {
 
+
    
     private:
         std::string name{};
