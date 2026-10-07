@@ -7,9 +7,6 @@
 namespace LeeNaKyung2593202 {
  // 1의 본인이름학번의 네임스페이스 안에 클래스를 정의하고
   class student {
-
-
-   
     private:
         std::string name{};
          int id{};
@@ -41,11 +38,11 @@ namespace LeeNaKyung2593202 {
         : name{n}, id{i}, score{s}, grade{g} {
         testId();
         testScore();
-        testGrade();
-    }
-    // only uses & when memory exists
-
-    // -input: 표준스트림입력으로 멤버변수들 입력, test함수들 호출
+        testGrade();}
+        
+        
+        // only uses & when memory exists 
+        // // -input: 표준스트림입력으로 멤버변수들 입력, test함수들 호출
         void input () {
          std::cout << "Enter ID: ";
          std::cin >> id;
@@ -66,7 +63,7 @@ namespace LeeNaKyung2593202 {
         }
         
     
-    // -set 접근함수들: 멤버변수 값 설정 및 test함수 호출
+        // -set 접근함수들: 멤버변수 값 설정 및 test함수 호출
 
         void setId(int d) {
         id = d;
@@ -100,19 +97,19 @@ namespace LeeNaKyung2593202 {
         // -get 접근함수들: 멤버변수 값 리턴
         int getId()  const {
         return id;
-    }
+     }
 
         int getScore()  const {
         return score;
-    }
-
+     }
+ 
         char getGrade()  const{
         return grade;
-    }
+     }
 
         const std::string& getline() const {
         return name;
-    }
+     }
 
         // -멤버함수로 전위증가연산자, 후위증가연산자 정의
         student& operator++(){
@@ -120,7 +117,7 @@ namespace LeeNaKyung2593202 {
         testScore();
 
         return *this;
-    }
+     }
         student operator++(int){
         student temp = *this;
         
@@ -128,45 +125,45 @@ namespace LeeNaKyung2593202 {
         testScore();
 
         return temp;
-    }
+     }
     
-    // -프렌드함수로서 입력연산자 >>, 출력연산자 <<, 이항연산자 ==, 이항연산자 + 정의
-    friend std::istream& operator>>(std::istream& is, student& s){
+     // -프렌드함수로서 입력연산자 >>, 출력연산자 <<, 이항연산자 ==, 이항연산자 + 정의
+        friend std::istream& operator>>(std::istream& is, student& s){
          std::cout << "Enter ID: ";
-    is >> s.id;
+        is >> s.id;
 
-    std::cout << "Enter Score: ";
-    is >> s.score;
+        std::cout << "Enter Score: ";
+        is >> s.score;
 
-    std::cout << "Enter Grade: ";
-    is >> s.grade;
+        std::cout << "Enter Grade: ";
+        is >> s.grade;
 
-    std::cout << "Enter name: ";
-    is >> std::ws;
-    std::getline(is, s.name);
+        std::cout << "Enter name: ";
+        is >> std::ws;
+        std::getline(is, s.name);
 
-    s.testId();
-    s.testScore();
-    s.testGrade();
+        s.testId();
+        s.testScore();
+        s.testGrade();
 
-    return is;
-    }
+        return is;
+     }
 
-    friend std::ostream& operator<<(std::ostream& os, const student& s){
+     friend std::ostream& operator<<(std::ostream& os, const student& s){
         os<< s.name <<","<<s.id<<","<<s.score<<","<<s.grade;
 
         return os;
-    }
+        }
 
    
 
-    friend bool operator==(const student&s1, const student&s2){
+     friend bool operator==(const student&s1, const student&s2){
         return s1.id==s2.id&&s1.score==s2.score&&s1.grade==s2.grade;
-    }
+        }
 
-    friend int operator+(const student&s1, const student&s2){
+     friend int operator+(const student&s1, const student&s2){
         return s1.score + s2.score;
-    }
+        }
 
 
  };
