@@ -1,12 +1,14 @@
 #pragma once
 #include <iostream>
 #include <cstdlib>
+#include <string>
 
 // -본인이름학번 네임스페이스
 namespace LeeNaKyung2593202 {
  // 1의 본인이름학번의 네임스페이스 안에 클래스를 정의하고
   class student {
     private:
+    std::string name{};
     int id{};
     int score{};
     char grade{};
@@ -32,23 +34,16 @@ namespace LeeNaKyung2593202 {
     }
 
     public:
-
-     student()
-        : id{1000000}, score{0}, grade{'F'} {
+     student(std::string& n="no name yet", int i=1234567, int s=0, char g='F')
+        : name{n}, id{i}, score{s}, grade{g} {
         testId();
         testScore();
         testGrade();
     }
-
-    student(int i, int s, char g)
-        : id{i}, score{s}, grade{g} {
-        testId();
-        testScore();
-        testGrade();
-    }
+    // only uses & when memory exists
 
     // -input: 표준스트림입력으로 멤버변수들 입력, test함수들 호출
-    void input () {
+        void input () {
          std::cout << "Enter ID: ";
          std::cin >> id;
          testId();
@@ -60,54 +55,61 @@ namespace LeeNaKyung2593202 {
          std::cout << "Enter Grade: ";
          std::cin >> grade;
          testGrade();
+
+         std::cout<<"Enter name: ";
+         std::getline(std::cin>>std::ws, name);
+         //std::cin>>std::ws>> name; 
+         //input함수 추가
         }
         
     
     // -set 접근함수들: 멤버변수 값 설정 및 test함수 호출
 
-    void setId(int d) {
+        void setId(int d) {
         id = d;
         testId();
     }
 
-    void setScore(int s) {
+        void setScore(int s) {
         score = s;
         testScore();
     }
 
-    void setGrade(char g) {
+        void setGrade(char g) {
         grade = g;
         testGrade();
     }
 
-    // -print: 표준스트림출력으로 멤버변수들 출력
-    void print()  const{
+        // -print: 표준스트림출력으로 멤버변수들 출력
+        void print()  const{
         std::cout << "ID: " << id << std::endl;
         std::cout << "Score: " << score << std::endl;
         std::cout << "Grade: " << grade << std::endl;
-    }
+        std::cout << "Name: " << name << std::sendl;
+        } 
+        // print함수 변경: std::string형 멤버변수도 표준스트림으로 출력
 
-// -get 접근함수들: 멤버변수 값 리턴
-    int getId()  const {
+        // -get 접근함수들: 멤버변수 값 리턴
+        int getId()  const {
         return id;
     }
 
-    int getScore()  const {
+        int getScore()  const {
         return score;
     }
 
-    char getGrade()  const{
+        char getGrade()  const{
         return grade;
     }
 
-    // -멤버함수로 전위증가연산자, 후위증가연산자 정의
-    student& operator++(){
+        // -멤버함수로 전위증가연산자, 후위증가연산자 정의
+        student& operator++(){
         ++score;
         testScore();
 
         return *this;
     }
-    student operator++(int){
+        student operator++(int){
         student temp = *this;
         
         ++score;
